@@ -9,10 +9,22 @@
     <title>GiphyChat</title>
   </head>
   <body>
-    <div>
-      HELLLO!!!!
-    </div>
+    <form action="submit" class="create-user">
+      <input type="text" class="userName" />
+      <input type="submit" value="Create User" />
+    </form>
 
+    <ul class="user-list">
+      <li>User</li>
+    </ul>
+    <div class="chatroom"></div>
+    <form action="" class="new-message">
+      <input type="text" class="messageBody" />
+      <input type="submit" value="Send Message" />
+    </form>
+
+    <script src="https://unpkg.com/@pusher/chatkit-client@1/dist/web/chatkit.js"></script>
+    <script src="./util/config.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
