@@ -2,4 +2,4 @@
 
 PLAY GIPHTIONARY NOW!!!
 
-https://nickyiliwang.github.io/GiphyChat/
+https://nickyiliwang.github.io/Giphtionary/
