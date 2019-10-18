@@ -1,0 +1,162 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 16px;
+  background: linear-gradient(142deg, #290628, #3b0086);
+  color: white;
+  font-family: "Raleway", sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 6rem;
+  color: #ffce00;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 3.6rem;
+  color: #ffce00;
+  margin-top: 8px;
+}
+
+p,
+label {
+  font-size: 2rem;
+}
+
+/* color scheme */
+.nothing {
+  color: #ea7af4;
+  color: #b43e8f;
+  color: #6200b3;
+  color: #3b0086;
+  color: #290628;
+  color: #ffce00;
+}
+
+/* End of Global default styles */
+
+/* Start of Instruction Section */
+.Instructions {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.Instructions h2 {
+  width: 100%;
+}
+
+.begin {
+  font-size: 2em;
+}
+/* End of Instructions */
+
+/* Start of Game Section */
+.game {
+  padding-top: 50px;
+  height: 100vh;
+  overflow: auto;
+}
+
+.hiddenGifContainer {
+  display: none;
+}
+
+.chatRoom {
+  border: 1px dotted #ffce00;
+  padding: 15px;
+  margin: 10px;
+}
+
+.gameInterface {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.messageBody {
+  width: 20vw;
+}
+
+input {
+  border: solid 2px #ffce00;
+  border-radius: 10px;
+  height: 38px;
+  margin: 0;
+  transition: 0.3s;
+}
+
+input[type="text"] {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+  background-color: white;
+  color: #0f2128;
+}
+
+input[type="submit"] {
+  background-color: #ffce00;
+  color: #0f2128;
+  padding: 0 15px;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  color: white;
+}
+
+.renderTempGifs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gif-box {
+  margin: 10px;
+  width: 212px;
+}
+
+.img-box {
+  border: 6px solid #ea7af4;
+}
+
+.all-gifs {
+  cursor: pointer;
+}
+
+.gifsToSend {
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* End of Game Section */

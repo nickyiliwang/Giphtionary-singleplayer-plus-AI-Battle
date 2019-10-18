@@ -4,24 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style/setup.css" />
     <link rel="stylesheet" href="./style/style.css" />
-    <title>GiphyChat</title>
+    <link rel="stylesheet" href="./style/glowingTitleScreenHeader.css" />
+    <title>Giphtionary!!!</title>
   </head>
   <body>
-    <form action="submit" class="create-user">
-      <input type="text" class="userName" />
-      <input type="submit" value="Create User" />
-    </form>
+    <div class="wrapper">
+      <header>
+        <p>
+          <a href="#Instructions">
+            giphtionary !!!
+          </a>
+        </p>
+      </header>
+      <!-- Start of Instructions -->
+      <section class="Instructions" id="Instructions">
+        <h1>Instructions</h1>
+        <h2>
+          <hr />
+          Welcome to Giphtionary, a pictionary like game with a twist! The goal
+          of the game is to guess what the “Gifturist” is trying to communicate
+          through the gifs that they send you. You win the round by guessing
+          correctly.
+          <hr />
+          Player 1: Use the search bar with terms that you would like your
+          opponents to guess. Then click on the gifs to select them as clues,
+          send the message by pressing enter, or click the 'Send Message'
+          button. Game Begins!
+          <hr />
+          Player 2: Take a guess by typing in the same search bar without
+          selecting any gifs, once you got the right answer, then the roles
+          swap!
+          <br />
+        </h2>
+        <a class="begin" href="#game">READY TO BEGIN ?</a>
+      </section>
+      <!-- End of Instructions -->
+      <!-- Start of Game -->
+      <section class="game" id="game">
+        <div class="chatRoom"><h2>Messages:</h2></div>
+        
+        <textarea type="text" class="hiddenGifContainer" placeholder="hidden"></textarea>
+        <div class="gameInterface">
+          <form action="" class="messageDisplay">
+            <input type="text" class="messageBody" />
+            <input type="submit" value="Send Message" />
+          </form>
+          <!-- Start of Counter -->
+          Player 1: <span class="player1">0</span>
+          <input type="submit" value="+" class="p1-inc" />
+          <input type="submit" value="-" class="p1-dec" />
+          Player 2: <span class="player2">0</span>
+          <input type="submit" value="+" class="p2-inc" />
+          <input type="submit" value="-" class="p2-dec" />
+          <!-- End of Counter -->
+        </div>
+        <h2>Selected Gif To Send:</h2>
 
-    <ul class="user-list">
-      <li>User</li>
-    </ul>
-    <div class="chatroom"></div>
-    <form action="" class="new-message">
-      <input type="text" class="messageBody" />
-      <input type="submit" value="Send Message" />
-    </form>
+        <div class="gifsToSend"></div>
+        <div class="renderTempGifs">
+          
+        </div>
+      </section>
+      <!-- End of Game -->
+    </div>
 
     <script src="https://unpkg.com/@pusher/chatkit-client@1/dist/web/chatkit.js"></script>
     <script src="./util/config.js"></script>

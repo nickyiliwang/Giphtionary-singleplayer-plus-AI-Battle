@@ -1,0 +1,78 @@
+/* credit: https://codepen.io/FelixRilling/pen/qzfoc */
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Neon*/
+header p {
+  text-align: center;
+  font-size: 7em;
+}
+
+header a,
+.begin {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+header a,
+.begin {
+  font-family: Monoton;
+  text-transform: capitalize;
+  color: #ff1654;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+header a:hover,
+.begin:hover {
+  color: #fff;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+header p a:hover {
+  color: #ffffff;
+}
+/*glow for webkit*/
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1654,
+      0 0 70px #ff1654, 0 0 80px #ff1654, 0 0 100px #ff1654, 0 0 150px #ff1654;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1654,
+      0 0 35px #ff1654, 0 0 40px #ff1654, 0 0 50px #ff1654, 0 0 75px #ff1654;
+  }
+}
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1654,
+      0 0 70px #ff1654, 0 0 80px #ff1654, 0 0 100px #ff1654, 0 0 150px #ff1654;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1654,
+      0 0 35px #ff1654, 0 0 40px #ff1654, 0 0 50px #ff1654, 0 0 75px #ff1654;
+  }
+}
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1654,
+      0 0 70px #ff1654, 0 0 80px #ff1654, 0 0 100px #ff1654, 0 0 150px #ff1654;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1654,
+      0 0 35px #ff1654, 0 0 40px #ff1654, 0 0 50px #ff1654, 0 0 75px #ff1654;
+  }
+}
