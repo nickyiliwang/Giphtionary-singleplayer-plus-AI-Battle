@@ -40,8 +40,6 @@ function giphtionaryInit() {
   chatManager
     .connect()
     .then(currentUser => {
-      console.log("Connected as user ", currentUser);
-
       messageDisplay.addEventListener("submit", e => {
         e.preventDefault();
         currentUser.sendSimpleMessage({
@@ -75,7 +73,6 @@ function giphtionaryInit() {
             renderHtml.setAttribute("class", "renderHtml");
             httpsCheck();
             chatroom.appendChild(renderHtml);
-            console.log(message);
           }
         },
         messageLimit: 0
@@ -97,7 +94,6 @@ function giphtionaryInit() {
         while (renderTempGifs.firstChild)
           renderTempGifs.removeChild(renderTempGifs.firstChild);
 
-        console.log(data.data);
         let gifsToRender = data.data;
 
         gifsToRender.forEach(gif => {
