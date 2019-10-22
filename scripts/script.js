@@ -65,7 +65,7 @@ function giphtionaryInit() {
       `;
               } else {
                 renderHtml.innerHTML = `
-          <p  class="message"></br><span>CreatedAt: ${message.createdAt}</span></br>Message: ${message.parts[0].payload.content}<hr></p>
+          <p class="message"></br><span>CreatedAt: ${message.createdAt}</span></br>Message: ${message.parts[0].payload.content}<hr></p>
       `;
               }
             };
