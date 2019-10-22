@@ -82,7 +82,7 @@ function giphtionaryInit() {
       console.error("error:", error);
     });
 
-  messageBody.addEventListener("keypress", e => {
+  messageBody.addEventListener("keyup", e => {
     let searchTerm = e.target.value;
 
     fetch(
