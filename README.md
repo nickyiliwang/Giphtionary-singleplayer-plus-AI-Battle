@@ -1,5 +1,3 @@
-# Giphtionary
+# Giphtionary singleplayer
 
-PLAY GIPHTIONARY NOW!!!
-
-https://nickyiliwang.github.io/Giphtionary/
+This is a devlopment version of the popular giphtionary game, including difficulty selection and advance ai logic to decimate the human race
