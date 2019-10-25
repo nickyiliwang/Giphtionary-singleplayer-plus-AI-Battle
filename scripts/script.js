@@ -13,15 +13,14 @@ const hiddenGifContainer = document.querySelector(".hiddenGifContainer");
 // Counter
 const player1 = document.querySelector(".player1");
 const player2 = document.querySelector(".player2");
-const p1Inc = document.querySelector(".p1-inc");
-const p1Dec = document.querySelector(".p1-dec");
-const p2Inc = document.querySelector(".p2-inc");
-const p2Dec = document.querySelector(".p2-dec");
 
 // helper functions
 const randomize = max => {
   return Math.floor(Math.random() * Math.floor(max));
 };
+
+// sudo
+// fo the ai to work, there needs to be a way of detecting user renderHtml inputs, and only get the value that are not http links, I need an object that hosts the terms and keywords, for checking, and responding with correct or incorrect and route accordingly,
 
 let userId = `user${randomize(10)}`;
 
@@ -37,6 +36,10 @@ const chatManager = new Chatkit.ChatManager({
 });
 
 function giphtionaryInit() {
+  axios
+    .get("https://random-word-api.herokuapp.com/word?key=T6XZ1HV3&number=1")
+    .then(res => console.log(res.data[0]));
+
   chatManager
     .connect()
     .then(currentUser => {
@@ -51,6 +54,8 @@ function giphtionaryInit() {
         // remove after sending
         while (gifsToSend.firstChild)
           gifsToSend.removeChild(gifsToSend.firstChild);
+
+        // scanChatroom
       });
 
       currentUser.subscribeToRoomMultipart({
@@ -85,31 +90,35 @@ function giphtionaryInit() {
   messageBody.addEventListener("keyup", e => {
     let searchTerm = e.target.value;
 
-    fetch(
-      `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${GiphyApiKey}&limit=12`
-    )
-      .then(res => res.json())
-      .then(data => {
-        // remove after new api calls
-        while (renderTempGifs.firstChild)
-          renderTempGifs.removeChild(renderTempGifs.firstChild);
+    axios({
+      method: "GET",
+      url: "https://proxy.hackeryou.com",
+      dataResponse: "json",
+      params: {
+        reqUrl: `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${GiphyApiKey}&limit=12`,
+        xmlToJSON: false
+      }
+    }).then(res => {
+      // remove after new api calls
+      while (renderTempGifs.firstChild)
+        renderTempGifs.removeChild(renderTempGifs.firstChild);
 
-        let gifsToRender = data.data;
+      let gifsToRender = res.data.data;
 
-        gifsToRender.forEach(gif => {
-          const gifHtml = document.createElement("div");
-          gifHtml.setAttribute("class", "gifHtml");
+      gifsToRender.forEach(gif => {
+        const gifHtml = document.createElement("div");
+        gifHtml.setAttribute("class", "gifHtml");
 
-          gifHtml.innerHTML = `<div class="gif-box">
+        gifHtml.innerHTML = `<div class="gif-box">
           <div class="img-box">
           <img class="all-gifs" src="${gif.images.downsized.url}" alt="gifs">
           </div>
           <p class="gif-title">${gif.title}</p>
       </div>
       `;
-          renderTempGifs.appendChild(gifHtml);
-        });
+        renderTempGifs.appendChild(gifHtml);
       });
+    });
 
     // if the textbox still has images stored, typing will overwrite the textContent
     hiddenGifContainer.textContent = searchTerm;
@@ -134,23 +143,6 @@ function giphtionaryInit() {
         gifsToSend.removeChild(gifsToSend.firstChild);
       gifsToSend.appendChild(gifToSendHTML);
     }
-  });
-
-  // clicker logic
-  p1Inc.addEventListener("click", () => {
-    player1.textContent++;
-  });
-
-  p1Dec.addEventListener("click", () => {
-    player1.textContent--;
-  });
-
-  p2Inc.addEventListener("click", () => {
-    player2.textContent++;
-  });
-
-  p2Dec.addEventListener("click", () => {
-    player2.textContent--;
   });
 }
 

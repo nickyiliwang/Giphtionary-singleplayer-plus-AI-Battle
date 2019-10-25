@@ -19,47 +19,14 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <p>
-          <a href="#Instructions">
-            giphtionary !!!
-          </a>
-        </p>
-      </header>
-      <!-- Start of Instructions -->
-      <section class="Instructions" id="Instructions">
-        <h1>Instructions</h1>
-        <h2>
-          <hr />
-          Welcome to Giphtionary, a pictionary like game with a twist! The goal
-          of the game is to guess what the “Gifturist” is trying to communicate
-          through the gifs that they send you. You win the round by guessing
-          correctly.
-          <hr />
-          In single player/AI battle mode, you friendly AI pal will randomly
-          select a word and fetch a
-        </h2>
-        <a class="begin single" href="#game">singleplayer</a>
-        <a class="begin single difficulty" href="#game"
-          >Select Difficulties: <span>Easy</span></a
-        >
-        <a class="begin single difficulty" href="#game"
-          >Select Difficulties: <span>Medium</span></a
-        >
-        <a class="begin single difficulty" href="#game"
-          >Select Difficulties: <span>Hard</span></a
-        >
-        <a class="begin single difficulty" href="#game"
-          >Select Difficulties: <span>Extreme</span></a
-        >
-        <a class="begin multi" href="#game">multiplayer</a>
-        <a class="begin" href="#game">READY TO BEGIN ?</a>
-      </section>
-      <!-- End of Instructions -->
+      <!-- singleplayer,Easy, Medium, Hard, Extreme, multiplayer -->
+
+      <!-- In single player/AI battle mode, you friendly AI pal will randomly
+          select a word and fetch -->
+
       <!-- Start of Game -->
       <section class="game" id="game">
         <div class="chatRoom"><h2>Messages:</h2></div>
-
         <textarea
           type="text"
           class="hiddenGifContainer"
@@ -71,8 +38,8 @@
             <input type="submit" value="Send Message" />
           </form>
           <!-- Start of Counter -->
-          Computer: <span class="player1">0</span>
-          Player: <span class="player2">0</span>
+          Computer: <span class="player1">0</span> Player:
+          <span class="player2">0</span>
           <!-- End of Counter -->
         </div>
         <h2>Selected Gif To Send:</h2>
@@ -83,6 +50,12 @@
       <!-- End of Game -->
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.0.min.js"
+      integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/@pusher/chatkit-client@1/dist/web/chatkit.js"></script>
     <script src="./util/config.js"></script>
     <script src="./scripts/script.js"></script>
