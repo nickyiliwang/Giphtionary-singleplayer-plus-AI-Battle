@@ -10,6 +10,20 @@ const renderTempGifs = document.querySelector(".renderTempGifs");
 const allGifs = document.querySelector(".all-gifs");
 const gifsToSend = document.querySelector(".gifsToSend");
 const hiddenGifContainer = document.querySelector(".hiddenGifContainer");
+
+const wordsData = [
+  "cool",
+  "banana",
+  "apple",
+  "carpool",
+  "graves",
+  "vampires",
+  "jungle",
+  "group",
+  "loneliness",
+  "savage"
+];
+
 // Counter
 const player1 = document.querySelector(".player1");
 const player2 = document.querySelector(".player2");
@@ -36,9 +50,42 @@ const chatManager = new Chatkit.ChatManager({
 });
 
 function giphtionaryInit() {
-  axios
-    .get("https://random-word-api.herokuapp.com/word?key=T6XZ1HV3&number=1")
-    .then(res => console.log(res.data[0]));
+  // random words api
+  // axios
+  //   .get("https://wordsapiv1.p.mashape.com/words?random=true")
+  //   .header("X-Mashape-Key", "<required>")
+  //   .then(res => console.log(res.data));
+
+  let randomWord = wordsData[randomize(9)];
+  axios({
+    method: "GET",
+    url: "https://proxy.hackeryou.com",
+    dataResponse: "json",
+    params: {
+      reqUrl: `http://api.giphy.com/v1/gifs/search?q=${randomWord}&api_key=${GiphyApiKey}&limit=12`,
+      xmlToJSON: false
+    }
+  }).then(res => {
+    // remove after new api calls
+    while (renderTempGifs.firstChild)
+      renderTempGifs.removeChild(renderTempGifs.firstChild);
+
+    let gifsToRender = res.data.data;
+
+    gifsToRender.forEach(gif => {
+      const gifHtml = document.createElement("div");
+      gifHtml.setAttribute("class", "gifHtml");
+
+      gifHtml.innerHTML = `<div class="gif-box">
+          <div class="img-box">
+          <img class="all-gifs" src="${gif.images.downsized.url}" alt="gifs">
+          </div>
+          <p class="gif-title">${gif.title}</p>
+      </div>
+      `;
+      renderTempGifs.appendChild(gifHtml);
+    });
+  });
 
   chatManager
     .connect()
@@ -89,36 +136,6 @@ function giphtionaryInit() {
 
   messageBody.addEventListener("keyup", e => {
     let searchTerm = e.target.value;
-
-    axios({
-      method: "GET",
-      url: "https://proxy.hackeryou.com",
-      dataResponse: "json",
-      params: {
-        reqUrl: `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${GiphyApiKey}&limit=12`,
-        xmlToJSON: false
-      }
-    }).then(res => {
-      // remove after new api calls
-      while (renderTempGifs.firstChild)
-        renderTempGifs.removeChild(renderTempGifs.firstChild);
-
-      let gifsToRender = res.data.data;
-
-      gifsToRender.forEach(gif => {
-        const gifHtml = document.createElement("div");
-        gifHtml.setAttribute("class", "gifHtml");
-
-        gifHtml.innerHTML = `<div class="gif-box">
-          <div class="img-box">
-          <img class="all-gifs" src="${gif.images.downsized.url}" alt="gifs">
-          </div>
-          <p class="gif-title">${gif.title}</p>
-      </div>
-      `;
-        renderTempGifs.appendChild(gifHtml);
-      });
-    });
 
     // if the textbox still has images stored, typing will overwrite the textContent
     hiddenGifContainer.textContent = searchTerm;
